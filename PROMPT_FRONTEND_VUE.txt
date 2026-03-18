@@ -1,0 +1,195 @@
+================================================================================
+PROMPT PARA FRONTEND VUE.JS - GESTIÓN DE GASTOS Y SERVICIOS
+================================================================================
+
+## CONTEXTO DEL PROYECTO
+
+Vas a crear el frontend de una aplicación web para gestionar gastos y servicios del hogar. El backend ya está desarrollado en Django REST Framework y está corriendo en http://localhost:8000.
+
+## STACK DEL FRONTEND
+
+- Framework: Vue.js 3 (Composition API)
+- Router: Vue Router 4
+- Estado: Pinia
+- HTTP: Axios
+- UI: Vuetify 3 o TailwindCSS
+- Gráficos: Chart.js
+- Icons: Material Design Icons
+
+## AUTENTICACIÓN JWT
+
+El backend usa JWT con djangorestframework-simplejwt:
+- Access token: expira en 1 hora
+- Refresh token: para renovar access token
+
+Headers requeridos en peticiones protegidas:
+```
+Authorization: Bearer <access_token>
+```
+
+## ESTRUCTURA DE PROYECTO RECOMENDADA
+
+```
+src/
+├── api/
+│   ├── axios.js          # Configuración de Axios
+│   ├── auth.js           # Endpoints de autenticación
+│   └── servicios.js     # Endpoints de servicios, pagos, notificaciones
+├── stores/
+│   ├── auth.js           # Store de autenticación
+│   └── servicios.js      # Store de servicios
+├── views/
+│   ├── Login.vue
+│   ├── Register.vue
+│   ├── Dashboard.vue
+│   ├── Servicios.vue
+│   ├── Pagos.vue
+│   ├── Notificaciones.vue
+│   ├── Graficos.vue
+│   └── Ayuda.vue
+├── components/
+│   ├── Navbar.vue
+│   ├── ServicioCard.vue
+│   ├── ResumenGastos.vue
+│   └── GraficoGastos.vue
+├── router/
+│   └── index.js
+├── App.vue
+└── main.js
+```
+
+## ENDPOINTS DEL BACKEND
+
+### Autenticación
+- POST /api/auth/register/ → {"nombre", "correo", "password", "password_confirm"}
+- POST /api/auth/login/ → {"correo", "password"} → {"access", "refresh"}
+- POST /api/auth/token/refresh/ → {"refresh"} → {"access"}
+- GET /api/auth/me/ → datos del usuario
+
+### Tipos de Servicio
+- GET /api/services/tipos-servicio/ → [{"id", "nombre"}]
+
+### Catálogo
+- GET /api/services/catalogo/
+- GET /api/services/catalogo/?tipo_servicio=1
+
+### Servicios (CRUD)
+- GET /api/services/servicios/ → lista de mis servicios
+- POST /api/services/servicios/ → crear servicio
+- GET /api/services/servicios/{id}/
+- PUT /api/services/servicios/{id}/
+- DELETE /api/services/servicios/{id}/ → soft delete (activo=false)
+
+Campos para crear servicio:
+```
+{
+  "tipo_servicio": 1,
+  "nombre_servicio": "Netflix",
+  "monto_mensual": 15.99,
+  "fecha_vencimiento": "2026-04-15"
+}
+```
+
+### Resúmenes y Gráficos
+- GET /api/services/servicios/resumen/ → {"total_mensual", "servicios_activos"}
+- GET /api/services/servicios/por_tipo/ → [{"tipo_id", "tipo_nombre", "total", "cantidad"}]
+- GET /api/services/servicios/graficos/ → {"gastos_por_mes": [...], "gastos_por_tipo": [...]}
+
+### Pagos
+- GET /api/services/pagos/ → lista de pagos
+- POST /api/services/pagos/ → registrar pago
+- GET /api/services/pagos/{id}/
+- PUT /api/services/pagos/{id}/
+- GET /api/services/pagos/?estado=pagado → filtrar
+- GET /api/services/pagos/?anio=2026&mes=3 → filtrar por fecha
+
+Campos para crear pago:
+```
+{
+  "servicio_usuario": 1,
+  "monto_pagado": 15.99,
+  "fecha_vencimiento_cubierta": "2026-04-30",
+  "estado": "pagado"
+}
+```
+
+### Notificaciones
+- GET /api/services/notificaciones/
+- GET /api/services/notificaciones/pendientes/
+- PATCH /api/services/notificaciones/{id}/ → {"leida": true/false}
+
+### Ayuda/FAQ
+- GET /api/services/ayuda/
+- GET /api/services/ayuda/?categoria=pagos
+
+## FUNCIONALIDADES REQUERIDAS
+
+### 1. Autenticación
+- Login con correo y contraseña
+- Registro de nuevos usuarios
+- Cerrar sesión
+- Persistir token en localStorage
+- Interceptar respuestas 401 para redirigir a login
+- Renovar token automáticamente antes de que expire
+
+### 2. Dashboard
+- Resumen de gastos mensuales
+- Cantidad de servicios activos
+- Notificaciones pendientes (badge en navbar)
+- Acceso rápido a gráficos
+
+### 3. Gestión de Servicios
+- Listar servicios del usuario
+- Crear nuevo servicio (seleccionar tipo, nombre, monto, fecha)
+- Editar servicio
+- Eliminar servicio (soft delete)
+- Mostrar estado activo/inactivo
+- Validar que solo uno de: catalogo_servicio o nombre_servicio
+
+### 4. Gestión de Pagos
+- Historial de pagos
+- Registrar nuevo pago
+- Filtrar por estado (pendiente/pagado)
+- Filtrar por fecha
+- Mostrar servicio asociado
+
+### 5. Gráficos
+- Gráfico de gastos por mes (línea)
+- Gráfico de gastos por tipo (torta/dona)
+- Selector de período
+
+### 6. Notificaciones
+- Lista de notificaciones
+- Indicador de no leídas
+- Marcar como leída
+- Link al servicio relacionado
+
+### 7. Ayuda/FAQ
+- Lista de preguntas frecuentes
+- Filtrar por categoría
+
+## CONSIDERACIONES UI/UX
+
+- Tema oscuro/claro (opcional)
+- Responsive design para móvil
+- Loading states en peticiones
+- Mensajes de error toast
+- Confirmar antes de eliminar
+- Dates en formato local (dd/mm/yyyy)
+- Currency en formato local ($)
+
+## PASOS PARA IMPLEMENTAR
+
+1. Crear proyecto Vue: `npm create vue@latest`
+2. Instalar dependencias: axios, pinia, vue-router, chart.js
+3. Configurar Axios con interceptor de token
+4. Crear store de autenticación
+5. Crear vistas y componentes
+6. Implementar routing con guards
+7. Probar integración con backend
+
+## DATO IMPORTANTE
+
+El backend está corriendo en localhost:8000. En producción, cambiar la URL base.
+
+================================================================================
