@@ -9,3 +9,6 @@ python manage.py collectstatic --noinput
 
 # Aplicar migraciones
 python manage.py migrate
+
+# Aplicar migraciones
+python manage.py seed_tipos_servicio
