@@ -2,6 +2,7 @@
 Django testing settings.
 Uses SQLite for faster tests.
 """
+
 from .base import *
 
 DEBUG = False
