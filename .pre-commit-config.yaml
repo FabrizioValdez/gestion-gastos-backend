@@ -1,0 +1,31 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: ruff check
+        language: system
+        types: [python]
+        pass_filenames: true
+
+      - id: ruff-format
+        name: ruff format
+        entry: ruff format
+        language: system
+        types: [python]
+        pass_filenames: true
+
+      - id: trailing-whitespace
+        name: trailing whitespace
+        entry: bash -c 'if grep -q "[[:space:]]$" "$1"; then echo "Trailing whitespace found"; exit 1; fi'
+        language: system
+        pass_filenames: true
+        stages: [commit]
+
+      - id: no-commit-to-branch
+        name: no commit to branch
+        entry: bash -c 'if [ "$1" = "main" ] || [ "$1" = "master" ]; then echo "Cannot commit directly to protected branch"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        args: ["main"]
+        stages: [commit]
