@@ -6,7 +6,7 @@ from rest_framework import status
 @pytest.mark.django_db
 class TestRegisterView:
     def test_registro_exitoso(self, api_client):
-        url = reverse("registro")
+        url = reverse("register")
         data = {
             "nombre": "Juan Perez",
             "correo": "juan@test.com",
@@ -20,7 +20,7 @@ class TestRegisterView:
         assert response.data["tokens"]["access"] is not None
 
     def test_registro_correo_existente(self, api_client, cliente):
-        url = reverse("registro")
+        url = reverse("register")
         data = {
             "nombre": "Otro Usuario",
             "correo": cliente.correo,
@@ -32,7 +32,7 @@ class TestRegisterView:
         assert "correo" in response.data
 
     def test_registro_contrasenas_no_coinciden(self, api_client):
-        url = reverse("registro")
+        url = reverse("register")
         data = {
             "nombre": "Juan Perez",
             "correo": "juan@test.com",
@@ -43,7 +43,7 @@ class TestRegisterView:
         assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_registro_campos_faltantes(self, api_client):
-        url = reverse("registro")
+        url = reverse("register")
         data = {"nombre": "Juan Perez"}
         response = api_client.post(url, data, format="json")
         assert response.status_code == status.HTTP_400_BAD_REQUEST
@@ -105,7 +105,7 @@ class TestMeView:
 
     def test_actualizar_perfil(self, auth_client, cliente):
         url = reverse("me")
-        data = {"nombre": "Nombre Actualizado"}
+        data = {"nombre": "Nombre Actualizado", "correo": cliente.correo}
         response = auth_client.put(url, data, format="json")
         assert response.status_code == status.HTTP_200_OK
         cliente.refresh_from_db()
