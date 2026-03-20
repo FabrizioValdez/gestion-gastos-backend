@@ -12,7 +12,7 @@ class ClienteManager(BaseUserManager):
 
     def create_user(self, correo, nombre, password=None):
         if not correo:
-            raise ValueError('El correo es obligatorio')
+            raise ValueError("El correo es obligatorio")
         correo = self.normalize_email(correo)
         usuario = self.model(correo=correo, nombre=nombre)
         usuario.set_password(password)
@@ -32,6 +32,7 @@ class Cliente(AbstractBaseUser, PermissionsMixin):
     Modelo personalizado de Cliente.
     Usa correo electrónico como campo de autenticación principal.
     """
+
     nombre = models.CharField(max_length=150)
     correo = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
@@ -42,13 +43,13 @@ class Cliente(AbstractBaseUser, PermissionsMixin):
 
     objects = ClienteManager()
 
-    USERNAME_FIELD = 'correo'
-    REQUIRED_FIELDS = ['nombre']
+    USERNAME_FIELD = "correo"
+    REQUIRED_FIELDS = ["nombre"]
 
     class Meta:
-        db_table = 'cliente'
-        verbose_name = 'Cliente'
-        verbose_name_plural = 'Clientes'
+        db_table = "cliente"
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
 
     def __str__(self):
         return self.correo

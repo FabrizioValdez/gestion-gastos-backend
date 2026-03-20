@@ -4,19 +4,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('services', '0002_ayuda'),
+        ("services", "0002_ayuda"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='servicio_usuario',
-            name='fecha_vencimiento',
+            model_name="servicio_usuario",
+            name="fecha_vencimiento",
         ),
         migrations.AddField(
-            model_name='servicio_usuario',
-            name='dia_vencimiento',
-            field=models.PositiveSmallIntegerField(default=1, help_text='Día del mes de vencimiento (1-31)'),
+            model_name="servicio_usuario",
+            name="dia_vencimiento",
+            field=models.PositiveSmallIntegerField(
+                default=1, help_text="Día del mes de vencimiento (1-31)"
+            ),
         ),
     ]

@@ -4,27 +4,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('services', '0001_initial'),
+        ("services", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Ayuda',
+            name="Ayuda",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pregunta', models.CharField(max_length=255)),
-                ('respuesta', models.TextField()),
-                ('categoria', models.CharField(choices=[('pagos', 'Pagos'), ('servicios', 'Servicios'), ('cuenta', 'Cuenta'), ('general', 'General')], max_length=50)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('activa', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("pregunta", models.CharField(max_length=255)),
+                ("respuesta", models.TextField()),
+                (
+                    "categoria",
+                    models.CharField(
+                        choices=[
+                            ("pagos", "Pagos"),
+                            ("servicios", "Servicios"),
+                            ("cuenta", "Cuenta"),
+                            ("general", "General"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("activa", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Ayuda',
-                'verbose_name_plural': 'Ayuda',
-                'db_table': 'ayuda',
-                'ordering': ['orden', 'pregunta'],
+                "verbose_name": "Ayuda",
+                "verbose_name_plural": "Ayuda",
+                "db_table": "ayuda",
+                "ordering": ["orden", "pregunta"],
             },
         ),
     ]

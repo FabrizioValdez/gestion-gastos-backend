@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,94 +14,203 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Catalogo_servicio',
+            name="Catalogo_servicio",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=150)),
-                ('imagen_url', models.URLField(blank=True, max_length=500, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=150)),
+                ("imagen_url", models.URLField(blank=True, max_length=500, null=True)),
             ],
             options={
-                'verbose_name': 'Catálogo de Servicio',
-                'verbose_name_plural': 'Catálogos de Servicios',
-                'db_table': 'catalogo_servicio',
+                "verbose_name": "Catálogo de Servicio",
+                "verbose_name_plural": "Catálogos de Servicios",
+                "db_table": "catalogo_servicio",
             },
         ),
         migrations.CreateModel(
-            name='Tipo_servicio',
+            name="Tipo_servicio",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=100, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=100, unique=True)),
             ],
             options={
-                'verbose_name': 'Tipo de Servicio',
-                'verbose_name_plural': 'Tipos de Servicios',
-                'db_table': 'tipo_servicio',
+                "verbose_name": "Tipo de Servicio",
+                "verbose_name_plural": "Tipos de Servicios",
+                "db_table": "tipo_servicio",
             },
         ),
         migrations.CreateModel(
-            name='Servicio_usuario',
+            name="Servicio_usuario",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre_servicio', models.CharField(blank=True, max_length=150, null=True)),
-                ('imagen_url', models.URLField(blank=True, max_length=500, null=True)),
-                ('monto_mensual', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('fecha_vencimiento', models.DateField()),
-                ('activo', models.BooleanField(default=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('catalogo_servicio', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='servicios_usuario', to='services.catalogo_servicio')),
-                ('cliente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servicios', to=settings.AUTH_USER_MODEL)),
-                ('tipo_servicio', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servicios_usuario', to='services.tipo_servicio')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "nombre_servicio",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("imagen_url", models.URLField(blank=True, max_length=500, null=True)),
+                ("monto_mensual", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("fecha_vencimiento", models.DateField()),
+                ("activo", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "catalogo_servicio",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="servicios_usuario",
+                        to="services.catalogo_servicio",
+                    ),
+                ),
+                (
+                    "cliente",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="servicios",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "tipo_servicio",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="servicios_usuario",
+                        to="services.tipo_servicio",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Servicio de Usuario',
-                'verbose_name_plural': 'Servicios de Usuario',
-                'db_table': 'servicio_usuario',
+                "verbose_name": "Servicio de Usuario",
+                "verbose_name_plural": "Servicios de Usuario",
+                "db_table": "servicio_usuario",
             },
         ),
         migrations.CreateModel(
-            name='Notificacion',
+            name="Notificacion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tipo', models.CharField(choices=[('vencimiento_proximo', 'Vencimiento Próximo'), ('pago_pendiente', 'Pago Pendiente')], max_length=30)),
-                ('mensaje', models.TextField()),
-                ('leida', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('cliente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notificaciones', to=settings.AUTH_USER_MODEL)),
-                ('servicio_usuario', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='notificaciones', to='services.servicio_usuario')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "tipo",
+                    models.CharField(
+                        choices=[
+                            ("vencimiento_proximo", "Vencimiento Próximo"),
+                            ("pago_pendiente", "Pago Pendiente"),
+                        ],
+                        max_length=30,
+                    ),
+                ),
+                ("mensaje", models.TextField()),
+                ("leida", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "cliente",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="notificaciones",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "servicio_usuario",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="notificaciones",
+                        to="services.servicio_usuario",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Notificación',
-                'verbose_name_plural': 'Notificaciones',
-                'db_table': 'notificacion',
-                'ordering': ['-created_at'],
+                "verbose_name": "Notificación",
+                "verbose_name_plural": "Notificaciones",
+                "db_table": "notificacion",
+                "ordering": ["-created_at"],
             },
         ),
         migrations.CreateModel(
-            name='Historial_pago',
+            name="Historial_pago",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('monto_pagado', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('fecha_pago', models.DateTimeField(blank=True, null=True)),
-                ('fecha_vencimiento_cubierta', models.DateField()),
-                ('estado', models.CharField(choices=[('pendiente', 'Pendiente'), ('pagado', 'Pagado')], default='pendiente', max_length=20)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('servicio_usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='historial_pagos', to='services.servicio_usuario')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("monto_pagado", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("fecha_pago", models.DateTimeField(blank=True, null=True)),
+                ("fecha_vencimiento_cubierta", models.DateField()),
+                (
+                    "estado",
+                    models.CharField(
+                        choices=[("pendiente", "Pendiente"), ("pagado", "Pagado")],
+                        default="pendiente",
+                        max_length=20,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "servicio_usuario",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="historial_pagos",
+                        to="services.servicio_usuario",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Historial de Pago',
-                'verbose_name_plural': 'Historial de Pagos',
-                'db_table': 'historial_pago',
-                'ordering': ['-created_at'],
+                "verbose_name": "Historial de Pago",
+                "verbose_name_plural": "Historial de Pagos",
+                "db_table": "historial_pago",
+                "ordering": ["-created_at"],
             },
         ),
         migrations.AddField(
-            model_name='catalogo_servicio',
-            name='tipo_servicio',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='catalogos', to='services.tipo_servicio'),
+            model_name="catalogo_servicio",
+            name="tipo_servicio",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="catalogos",
+                to="services.tipo_servicio",
+            ),
         ),
         migrations.AlterUniqueTogether(
-            name='catalogo_servicio',
-            unique_together={('tipo_servicio', 'nombre')},
+            name="catalogo_servicio",
+            unique_together={("tipo_servicio", "nombre")},
         ),
     ]

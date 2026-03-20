@@ -44,7 +44,9 @@ class TestCatalogoServicioViewSet:
 
 @pytest.mark.django_db
 class TestServicioUsuarioViewSet:
-    def test_crear_servicio_con_catalogo(self, auth_client, tipo_servicio_luz, catalogo_servicio):
+    def test_crear_servicio_con_catalogo(
+        self, auth_client, tipo_servicio_luz, catalogo_servicio
+    ):
         url = reverse("serviciousuario-list")
         data = {
             "tipo_servicio": tipo_servicio_luz.id,
@@ -67,7 +69,9 @@ class TestServicioUsuarioViewSet:
         response = auth_client.post(url, data, format="json")
         assert response.status_code == status.HTTP_201_CREATED
 
-    def test_error_ambos_campos_catalogo(self, auth_client, tipo_servicio_luz, catalogo_servicio):
+    def test_error_ambos_campos_catalogo(
+        self, auth_client, tipo_servicio_luz, catalogo_servicio
+    ):
         url = reverse("serviciousuario-list")
         data = {
             "tipo_servicio": tipo_servicio_luz.id,
@@ -114,7 +118,9 @@ class TestServicioUsuarioViewSet:
         response = auth_client.get(url)
         assert response.status_code == status.HTTP_200_OK
 
-    def test_dia_vencimiento_invalido(self, auth_client, tipo_servicio_luz, catalogo_servicio):
+    def test_dia_vencimiento_invalido(
+        self, auth_client, tipo_servicio_luz, catalogo_servicio
+    ):
         url = reverse("serviciousuario-list")
         data = {
             "tipo_servicio": tipo_servicio_luz.id,
@@ -164,7 +170,9 @@ class TestHistorialPagoViewSet:
         assert response.status_code == status.HTTP_200_OK
 
     def test_pagos_por_servicio(self, auth_client, historial_pago, servicio_usuario):
-        url = reverse("historialpago-por-servicio", kwargs={"servicio_id": servicio_usuario.id})
+        url = reverse(
+            "historialpago-por-servicio", kwargs={"servicio_id": servicio_usuario.id}
+        )
         response = auth_client.get(url)
         assert response.status_code == status.HTTP_200_OK
 
