@@ -1,5 +1,4 @@
 [lint]
-target = ["apps", "core"]
 select = [
     "E",     # pycodestyle errors
     "F",     # pyflakes
@@ -10,15 +9,14 @@ select = [
     "SIM",   # flake8-simplify
 ]
 ignore = [
-    "E501",  # line too long (handled by formatter)
+    "E501",  # line too long
     "B008",  # do not perform function calls in argument defaults
 ]
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["S101"]
 
 [format]
 quote-style = "double"
 indent-style = "space"
-line-ending = "auto"
-
-[lint.per-file-ignores]
-"__init__.py" = ["F401"]
-"tests/*" = ["S101"]  # assert statements allowed in tests
