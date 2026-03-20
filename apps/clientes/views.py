@@ -1,4 +1,5 @@
 from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -69,7 +70,7 @@ class MeView(generics.RetrieveUpdateAPIView):
     """Endpoint para obtener y actualizar datos del cliente autenticado."""
 
     serializer_class = ClienteSerializer
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get_object(self):
         return self.request.user

@@ -9,7 +9,6 @@ Run pytest --cov=. --cov-report=xml --cov-report=html
     Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
     LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
     SECRET_KEY: test-secret-key-for-ci
-  
 ============================= test session starts ==============================
 platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.11.15/x64/bin/python
 cachedir: .pytest_cache
@@ -19,89 +18,49 @@ configfile: pytest.ini
 testpaths: apps
 plugins: Faker-24.14.1, django-4.12.0, cov-4.1.0, xdist-3.8.0
 collecting ... collected 40 items
-apps/clientes/tests.py::TestRegisterView::test_registro_exitoso FAILED   [  2%]
-apps/clientes/tests.py::TestRegisterView::test_registro_correo_existente FAILED [  5%]
-apps/clientes/tests.py::TestRegisterView::test_registro_contrasenas_no_coinciden FAILED [  7%]
-apps/clientes/tests.py::TestRegisterView::test_registro_campos_faltantes FAILED [ 10%]
+
+apps/clientes/tests.py::TestRegisterView::test_registro_exitoso PASSED   [  2%]
+apps/clientes/tests.py::TestRegisterView::test_registro_correo_existente PASSED [  5%]
+apps/clientes/tests.py::TestRegisterView::test_registro_contrasenas_no_coinciden PASSED [  7%]
+apps/clientes/tests.py::TestRegisterView::test_registro_campos_faltantes PASSED [ 10%]
 apps/clientes/tests.py::TestLoginView::test_login_exitoso PASSED         [ 12%]
 apps/clientes/tests.py::TestLoginView::test_login_credenciales_invalidas PASSED [ 15%]
 apps/clientes/tests.py::TestLoginView::test_login_usuario_inactivo PASSED [ 17%]
 apps/clientes/tests.py::TestLoginView::test_login_campos_faltantes PASSED [ 20%]
 apps/clientes/tests.py::TestMeView::test_obtener_perfil_autenticado PASSED [ 22%]
 apps/clientes/tests.py::TestMeView::test_obtener_perfil_sin_autenticacion FAILED [ 25%]
-apps/clientes/tests.py::TestMeView::test_actualizar_perfil FAILED        [ 27%]
+apps/clientes/tests.py::TestMeView::test_actualizar_perfil PASSED        [ 27%]
 apps/clientes/tests.py::TestTokenRefresh::test_refresh_token_valido PASSED [ 30%]
 apps/clientes/tests.py::TestTokenRefresh::test_refresh_token_invalido PASSED [ 32%]
-apps/services/tests.py::TestHealthCheck::test_health_check FAILED        [ 35%]
-apps/services/tests.py::TestTipoServicioViewSet::test_listar_tipos_servicio FAILED [ 37%]
-apps/services/tests.py::TestTipoServicioViewSet::test_listar_sin_autenticacion FAILED [ 40%]
-apps/services/tests.py::TestCatalogoServicioViewSet::test_listar_catalogo FAILED [ 42%]
-apps/services/tests.py::TestCatalogoServicioViewSet::test_filtrar_por_tipo FAILED [ 45%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_con_catalogo FAILED [ 47%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_sin_catalogo FAILED [ 50%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_error_ambos_campos_catalogo FAILED [ 52%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_error_sin_catalogo_ni_nombre FAILED [ 55%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_listar_servicios_propios FAILED [ 57%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_eliminar_servicio_soft_delete FAILED [ 60%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_resumen_gastos FAILED [ 62%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_gastos_por_tipo FAILED [ 65%]
-apps/services/tests.py::TestServicioUsuarioViewSet::test_dia_vencimiento_invalido FAILED [ 67%]
-apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pendiente FAILED [ 70%]
-apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pagado_autofecha FAILED [ 72%]
-apps/services/tests.py::TestHistorialPagoViewSet::test_listar_pagos_usuario FAILED [ 75%]
-apps/services/tests.py::TestHistorialPagoViewSet::test_filtrar_pagos_por_estado FAILED [ 77%]
-apps/services/tests.py::TestHistorialPagoViewSet::test_pagos_por_servicio FAILED [ 80%]
-apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_exito FAILED    [ 82%]
-apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_sin_fecha FAILED [ 85%]
-apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_fecha_invalida FAILED [ 87%]
-apps/services/tests.py::TestNotificacionViewSet::test_listar_notificaciones FAILED [ 90%]
-apps/services/tests.py::TestNotificacionViewSet::test_notificaciones_pendientes FAILED [ 92%]
-apps/services/tests.py::TestNotificacionViewSet::test_marcar_como_leida FAILED [ 95%]
+apps/services/tests.py::TestHealthCheck::test_health_check PASSED        [ 35%]
+apps/services/tests.py::TestTipoServicioViewSet::test_listar_tipos_servicio PASSED [ 37%]
+apps/services/tests.py::TestTipoServicioViewSet::test_listar_sin_autenticacion PASSED [ 40%]
+apps/services/tests.py::TestCatalogoServicioViewSet::test_listar_catalogo PASSED [ 42%]
+apps/services/tests.py::TestCatalogoServicioViewSet::test_filtrar_por_tipo PASSED [ 45%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_con_catalogo PASSED [ 47%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_sin_catalogo PASSED [ 50%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_error_ambos_campos_catalogo PASSED [ 52%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_error_sin_catalogo_ni_nombre PASSED [ 55%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_listar_servicios_propios PASSED [ 57%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_eliminar_servicio_soft_delete PASSED [ 60%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_resumen_gastos PASSED [ 62%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_gastos_por_tipo PASSED [ 65%]
+apps/services/tests.py::TestServicioUsuarioViewSet::test_dia_vencimiento_invalido PASSED [ 67%]
+apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pendiente PASSED [ 70%]
+apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pagado_autofecha PASSED [ 72%]
+apps/services/tests.py::TestHistorialPagoViewSet::test_listar_pagos_usuario PASSED [ 75%]
+apps/services/tests.py::TestHistorialPagoViewSet::test_filtrar_pagos_por_estado PASSED [ 77%]
+apps/services/tests.py::TestHistorialPagoViewSet::test_pagos_por_servicio PASSED [ 80%]
+apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_exito PASSED    [ 82%]
+apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_sin_fecha PASSED [ 85%]
+apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_fecha_invalida PASSED [ 87%]
+apps/services/tests.py::TestNotificacionViewSet::test_listar_notificaciones PASSED [ 90%]
+apps/services/tests.py::TestNotificacionViewSet::test_notificaciones_pendientes PASSED [ 92%]
+apps/services/tests.py::TestNotificacionViewSet::test_marcar_como_leida PASSED [ 95%]
 apps/services/tests.py::TestAyudaViewSet::test_listar_ayuda PASSED       [ 97%]
 apps/services/tests.py::TestAyudaViewSet::test_filtrar_por_categoria PASSED [100%]
+
 =================================== FAILURES ===================================
-____________________ TestRegisterView.test_registro_exitoso ____________________
-apps/clientes/tests.py:9: in test_registro_exitoso
-    url = reverse("registro")
-          ^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
----------------------------- Captured stderr setup -----------------------------
-Creating test database for alias 'default'...
-_______________ TestRegisterView.test_registro_correo_existente ________________
-apps/clientes/tests.py:23: in test_registro_correo_existente
-    url = reverse("registro")
-          ^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
-___________ TestRegisterView.test_registro_contrasenas_no_coinciden ____________
-apps/clientes/tests.py:35: in test_registro_contrasenas_no_coinciden
-    url = reverse("registro")
-          ^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
-_______________ TestRegisterView.test_registro_campos_faltantes ________________
-apps/clientes/tests.py:46: in test_registro_campos_faltantes
-    url = reverse("registro")
-          ^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
 _______________ TestMeView.test_obtener_perfil_sin_autenticacion _______________
 /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/rest_framework/fields.py:437: in get_attribute
     return get_attribute(instance, self.source_attrs)
@@ -110,6 +69,7 @@ _______________ TestMeView.test_obtener_perfil_sin_autenticacion _______________
     instance = getattr(instance, attr)
                ^^^^^^^^^^^^^^^^^^^^^^^
 E   AttributeError: 'AnonymousUser' object has no attribute 'nombre'
+
 During handling of the above exception, another exception occurred:
 apps/clientes/tests.py:103: in test_obtener_perfil_sin_autenticacion
     response = api_client.get(url)
@@ -187,7 +147,9 @@ Traceback (most recent call last):
     instance = getattr(instance, attr)
                ^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'AnonymousUser' object has no attribute 'nombre'
+
 During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
@@ -231,314 +193,34 @@ Traceback (most recent call last):
 AttributeError: Got AttributeError when attempting to get a value for field `nombre` on serializer `ClienteSerializer`.
 The serializer field might be named incorrectly and not match any attribute or key on the `AnonymousUser` instance.
 Original exception text was: 'AnonymousUser' object has no attribute 'nombre'.
-______________________ TestMeView.test_actualizar_perfil _______________________
-apps/clientes/tests.py:110: in test_actualizar_perfil
-    assert response.status_code == status.HTTP_200_OK
-E   assert 400 == 200
-E    +  where 400 = <Response status_code=400, "application/json">.status_code
-E    +  and   200 = status.HTTP_200_OK
------------------------------- Captured log call -------------------------------
-WARNING  django.request:log.py:253 Bad Request: /api/auth/me/
-______________________ TestHealthCheck.test_health_check _______________________
-apps/services/tests.py:11: in test_health_check
-    url = reverse("health-check")
-          ^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'health-check' not found. 'health-check' is not a valid view function or pattern name.
-______________ TestTipoServicioViewSet.test_listar_tipos_servicio ______________
-apps/services/tests.py:20: in test_listar_tipos_servicio
-    url = reverse("tiposervicio-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'tiposervicio-list' not found. 'tiposervicio-list' is not a valid view function or pattern name.
-____________ TestTipoServicioViewSet.test_listar_sin_autenticacion _____________
-apps/services/tests.py:26: in test_listar_sin_autenticacion
-    url = reverse("tiposervicio-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'tiposervicio-list' not found. 'tiposervicio-list' is not a valid view function or pattern name.
-_______________ TestCatalogoServicioViewSet.test_listar_catalogo _______________
-apps/services/tests.py:34: in test_listar_catalogo
-    url = reverse("catalogoservicio-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'catalogoservicio-list' not found. 'catalogoservicio-list' is not a valid view function or pattern name.
-______________ TestCatalogoServicioViewSet.test_filtrar_por_tipo _______________
-apps/services/tests.py:40: in test_filtrar_por_tipo
-    url = reverse("catalogoservicio-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'catalogoservicio-list' not found. 'catalogoservicio-list' is not a valid view function or pattern name.
-_________ TestServicioUsuarioViewSet.test_crear_servicio_con_catalogo __________
-apps/services/tests.py:50: in test_crear_servicio_con_catalogo
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-_________ TestServicioUsuarioViewSet.test_crear_servicio_sin_catalogo __________
-apps/services/tests.py:62: in test_crear_servicio_sin_catalogo
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-_________ TestServicioUsuarioViewSet.test_error_ambos_campos_catalogo __________
-apps/services/tests.py:75: in test_error_ambos_campos_catalogo
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-_________ TestServicioUsuarioViewSet.test_error_sin_catalogo_ni_nombre _________
-apps/services/tests.py:87: in test_error_sin_catalogo_ni_nombre
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-___________ TestServicioUsuarioViewSet.test_listar_servicios_propios ___________
-apps/services/tests.py:97: in test_listar_servicios_propios
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-________ TestServicioUsuarioViewSet.test_eliminar_servicio_soft_delete _________
-apps/services/tests.py:103: in test_eliminar_servicio_soft_delete
-    url = reverse("serviciousuario-detail", kwargs={"pk": servicio_usuario.id})
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-detail' not found. 'serviciousuario-detail' is not a valid view function or pattern name.
-________________ TestServicioUsuarioViewSet.test_resumen_gastos ________________
-apps/services/tests.py:110: in test_resumen_gastos
-    url = reverse("serviciousuario-resumen")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-resumen' not found. 'serviciousuario-resumen' is not a valid view function or pattern name.
-_______________ TestServicioUsuarioViewSet.test_gastos_por_tipo ________________
-apps/services/tests.py:117: in test_gastos_por_tipo
-    url = reverse("serviciousuario-por-tipo")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-por-tipo' not found. 'serviciousuario-por-tipo' is not a valid view function or pattern name.
-___________ TestServicioUsuarioViewSet.test_dia_vencimiento_invalido ___________
-apps/services/tests.py:124: in test_dia_vencimiento_invalido
-    url = reverse("serviciousuario-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-______________ TestHistorialPagoViewSet.test_crear_pago_pendiente ______________
-apps/services/tests.py:138: in test_crear_pago_pendiente
-    url = reverse("historialpago-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-__________ TestHistorialPagoViewSet.test_crear_pago_pagado_autofecha ___________
-apps/services/tests.py:150: in test_crear_pago_pagado_autofecha
-    url = reverse("historialpago-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-______________ TestHistorialPagoViewSet.test_listar_pagos_usuario ______________
-apps/services/tests.py:163: in test_listar_pagos_usuario
-    url = reverse("historialpago-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-____________ TestHistorialPagoViewSet.test_filtrar_pagos_por_estado ____________
-apps/services/tests.py:168: in test_filtrar_pagos_por_estado
-    url = reverse("historialpago-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-_______________ TestHistorialPagoViewSet.test_pagos_por_servicio _______________
-apps/services/tests.py:173: in test_pagos_por_servicio
-    url = reverse(
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-por-servicio' not found. 'historialpago-por-servicio' is not a valid view function or pattern name.
-____________________ TestPagarDeuda.test_pagar_deuda_exito _____________________
-apps/services/tests.py:183: in test_pagar_deuda_exito
-    url = reverse("serviciousuario-pagar-deuda", kwargs={"pk": servicio_usuario.id})
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-__________________ TestPagarDeuda.test_pagar_deuda_sin_fecha ___________________
-apps/services/tests.py:190: in test_pagar_deuda_sin_fecha
-    url = reverse("serviciousuario-pagar-deuda", kwargs={"pk": servicio_usuario.id})
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-________________ TestPagarDeuda.test_pagar_deuda_fecha_invalida ________________
-apps/services/tests.py:196: in test_pagar_deuda_fecha_invalida
-    url = reverse("serviciousuario-pagar-deuda", kwargs={"pk": servicio_usuario.id})
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-______________ TestNotificacionViewSet.test_listar_notificaciones ______________
-apps/services/tests.py:205: in test_listar_notificaciones
-    url = reverse("notificacion-list")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-list' not found. 'notificacion-list' is not a valid view function or pattern name.
-____________ TestNotificacionViewSet.test_notificaciones_pendientes ____________
-apps/services/tests.py:210: in test_notificaciones_pendientes
-    url = reverse("notificacion-pendientes")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-pendientes' not found. 'notificacion-pendientes' is not a valid view function or pattern name.
-________________ TestNotificacionViewSet.test_marcar_como_leida ________________
-apps/services/tests.py:215: in test_marcar_como_leida
-    url = reverse("notificacion-marcar-leida", kwargs={"pk": notificacion.id})
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/base.py:98: in reverse
-    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/urls/resolvers.py:831: in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-E   django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-marcar-leida' not found. 'notificacion-marcar-leida' is not a valid view function or pattern name.
 =============================== warnings summary ===============================
-apps/clientes/tests.py: 4 warnings
+apps/clientes/tests.py: 5 warnings
 apps/services/tests.py: 25 warnings
   /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 22 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
     return self._jws.encode(
-apps/clientes/tests.py::TestMeView::test_obtener_perfil_autenticado
-apps/clientes/tests.py::TestMeView::test_actualizar_perfil
-apps/clientes/tests.py::TestTokenRefresh::test_refresh_token_valido
-apps/services/tests.py::TestAyudaViewSet::test_listar_ayuda
-apps/services/tests.py::TestAyudaViewSet::test_filtrar_por_categoria
+
+apps/clientes/tests.py: 3 warnings
+apps/services/tests.py: 25 warnings
   /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jwt/api_jwt.py:365: InsecureKeyLengthWarning: The HMAC key is 22 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
     decoded = self.decode_complete(
+
+apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pagado_autofecha
+  /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1671: RuntimeWarning: DateTimeField Historial_pago.fecha_pago received a naive datetime (2026-03-19 23:07:02.109804) while time zone support is active.
+    warnings.warn(
+
+apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_exito
+  /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1671: RuntimeWarning: DateTimeField Historial_pago.fecha_pago received a naive datetime (2026-03-10 00:00:00) while time zone support is active.
+    warnings.warn(
+
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
 ---------- coverage: platform linux, python 3.11.15-final-0 ----------
 Coverage HTML written to dir htmlcov
 Coverage XML written to file coverage.xml
+
 =========================== short test summary info ============================
-FAILED apps/clientes/tests.py::TestRegisterView::test_registro_exitoso - django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
-FAILED apps/clientes/tests.py::TestRegisterView::test_registro_correo_existente - django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
-FAILED apps/clientes/tests.py::TestRegisterView::test_registro_contrasenas_no_coinciden - django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
-FAILED apps/clientes/tests.py::TestRegisterView::test_registro_campos_faltantes - django.urls.exceptions.NoReverseMatch: Reverse for 'registro' not found. 'registro' is not a valid view function or pattern name.
 FAILED apps/clientes/tests.py::TestMeView::test_obtener_perfil_sin_autenticacion - AttributeError: Got AttributeError when attempting to get a value for field `nombre` on serializer `ClienteSerializer`.
 The serializer field might be named incorrectly and not match any attribute or key on the `AnonymousUser` instance.
 Original exception text was: 'AnonymousUser' object has no attribute 'nombre'.
-FAILED apps/clientes/tests.py::TestMeView::test_actualizar_perfil - assert 400 == 200
- +  where 400 = <Response status_code=400, "application/json">.status_code
- +  and   200 = status.HTTP_200_OK
-FAILED apps/services/tests.py::TestHealthCheck::test_health_check - django.urls.exceptions.NoReverseMatch: Reverse for 'health-check' not found. 'health-check' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestTipoServicioViewSet::test_listar_tipos_servicio - django.urls.exceptions.NoReverseMatch: Reverse for 'tiposervicio-list' not found. 'tiposervicio-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestTipoServicioViewSet::test_listar_sin_autenticacion - django.urls.exceptions.NoReverseMatch: Reverse for 'tiposervicio-list' not found. 'tiposervicio-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestCatalogoServicioViewSet::test_listar_catalogo - django.urls.exceptions.NoReverseMatch: Reverse for 'catalogoservicio-list' not found. 'catalogoservicio-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestCatalogoServicioViewSet::test_filtrar_por_tipo - django.urls.exceptions.NoReverseMatch: Reverse for 'catalogoservicio-list' not found. 'catalogoservicio-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_con_catalogo - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_crear_servicio_sin_catalogo - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_error_ambos_campos_catalogo - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_error_sin_catalogo_ni_nombre - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_listar_servicios_propios - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_eliminar_servicio_soft_delete - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-detail' not found. 'serviciousuario-detail' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_resumen_gastos - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-resumen' not found. 'serviciousuario-resumen' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_gastos_por_tipo - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-por-tipo' not found. 'serviciousuario-por-tipo' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestServicioUsuarioViewSet::test_dia_vencimiento_invalido - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-list' not found. 'serviciousuario-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pendiente - django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestHistorialPagoViewSet::test_crear_pago_pagado_autofecha - django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestHistorialPagoViewSet::test_listar_pagos_usuario - django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestHistorialPagoViewSet::test_filtrar_pagos_por_estado - django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-list' not found. 'historialpago-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestHistorialPagoViewSet::test_pagos_por_servicio - django.urls.exceptions.NoReverseMatch: Reverse for 'historialpago-por-servicio' not found. 'historialpago-por-servicio' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_exito - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_sin_fecha - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestPagarDeuda::test_pagar_deuda_fecha_invalida - django.urls.exceptions.NoReverseMatch: Reverse for 'serviciousuario-pagar-deuda' not found. 'serviciousuario-pagar-deuda' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestNotificacionViewSet::test_listar_notificaciones - django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-list' not found. 'notificacion-list' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestNotificacionViewSet::test_notificaciones_pendientes - django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-pendientes' not found. 'notificacion-pendientes' is not a valid view function or pattern name.
-FAILED apps/services/tests.py::TestNotificacionViewSet::test_marcar_como_leida - django.urls.exceptions.NoReverseMatch: Reverse for 'notificacion-marcar-leida' not found. 'notificacion-marcar-leida' is not a valid view function or pattern name.
-================== 31 failed, 9 passed, 34 warnings in 13.69s ==================
+================== 1 failed, 39 passed, 60 warnings in 13.43s ==================
 Error: Process completed with exit code 1.
