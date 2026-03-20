@@ -1,8 +1,9 @@
+import calendar
+
 from celery import shared_task
 from django.utils import timezone
-from datetime import timedelta
-import calendar
-from .models import Servicio_usuario, Notificacion
+
+from .models import Notificacion, Servicio_usuario
 
 
 @shared_task

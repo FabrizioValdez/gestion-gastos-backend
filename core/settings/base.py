@@ -2,8 +2,9 @@
 Django base settings for core project.
 Shared configuration between development and production.
 """
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent

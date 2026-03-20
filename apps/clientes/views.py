@@ -1,17 +1,16 @@
-from rest_framework import status, generics
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from apps.clientes.models import Cliente
-from apps.clientes.serializers import (
-    RegisterSerializer,
-    LoginSerializer,
-    ClienteSerializer,
-    UpdateClienteSerializer
-)
 from apps.clientes.permissions import IsOwner
+from apps.clientes.serializers import (
+    ClienteSerializer,
+    LoginSerializer,
+    RegisterSerializer,
+    UpdateClienteSerializer,
+)
 
 
 class RegisterView(APIView):

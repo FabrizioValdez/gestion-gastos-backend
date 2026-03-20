@@ -1,30 +1,42 @@
-from rest_framework import status, viewsets
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-from django.db.models import Sum, Count
 from datetime import datetime as dt
+
+from django.db.models import Count, Sum
 from django.db.models.functions import TruncMonth
-from django.utils import timezone
 from django.http import HttpResponse
-from django.conf import settings
+from django.utils import timezone
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from rest_framework import status, viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from apps.clientes.permissions import IsOwner
-from .models import Tipo_servicio, Catalogo_servicio, Servicio_usuario, Historial_pago, Notificacion, Ayuda
+
+from .models import (
+    Ayuda,
+    Catalogo_servicio,
+    Historial_pago,
+    Notificacion,
+    Servicio_usuario,
+    Tipo_servicio,
+)
 from .serializers import (
-    Tipo_servicioSerializer,
+    AyudaSerializer,
     Catalogo_servicioSerializer,
-    Servicio_usuarioSerializer,
     Historial_pagoSerializer,
     NotificacionSerializer,
-    AyudaSerializer
+    Servicio_usuarioSerializer,
+    Tipo_servicioSerializer,
 )
-from .tasks import generar_notificaciones_vencimiento, generar_notificaciones_pago_pendiente
+from .tasks import (
+    generar_notificaciones_pago_pendiente,
+    generar_notificaciones_vencimiento,
+)
 
 
 class HealthCheckView(APIView):

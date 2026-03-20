@@ -16,6 +16,9 @@ ignore = [
 [lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["S101"]
+"core/settings/*.py" = ["F403", "F405"]
+"core/settings/development.py" = ["F403", "F405"]
+"core/settings/production.py" = ["F403", "F405"]
 
 [format]
 quote-style = "double"

@@ -1,9 +1,10 @@
 """
 Django production settings.
 """
-from .base import *
+
 from decouple import config
-import os
+
+from .base import *
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 

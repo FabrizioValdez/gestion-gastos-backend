@@ -1,6 +1,6 @@
-from rest_framework import serializers
-from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
+from rest_framework import serializers
+
 from apps.clientes.models import Cliente
 
 
@@ -58,7 +58,7 @@ class LoginSerializer(serializers.Serializer):
             try:
                 cliente = Cliente.objects.get(correo=correo)
             except Cliente.DoesNotExist:
-                raise serializers.ValidationError('Credenciales inválidas.')
+                raise serializers.ValidationError('Credenciales inválidas.') from None
 
             if not cliente.check_password(password):
                 raise serializers.ValidationError('Credenciales inválidas.')

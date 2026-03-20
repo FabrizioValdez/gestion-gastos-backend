@@ -1,8 +1,8 @@
-from django.db import models
+
 from django.core.exceptions import ValidationError
+from django.db import models
+
 from apps.clientes.models import Cliente
-from datetime import timedelta
-from django.utils import timezone
 
 
 def validate_servicio_choice(instance):

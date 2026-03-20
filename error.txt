@@ -1,0 +1,280 @@
+Run ruff check apps core
+  ruff check apps core
+  shell: /usr/bin/bash -e {0}
+  env:
+    pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+    PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+    Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/clientes/models.py:1:1
+  |
+1 | / from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+2 | | from django.db import models
+3 | | from django.utils import timezone
+  | |_________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/clientes/serializers.py:1:1
+  |
+1 | / from rest_framework import serializers
+2 | | from django.contrib.auth import authenticate
+3 | | from django.contrib.auth.password_validation import validate_password
+4 | | from apps.clientes.models import Cliente
+  | |________________________________________^
+  |
+help: Organize imports
+
+F401 [*] `django.contrib.auth.authenticate` imported but unused
+ --> apps/clientes/serializers.py:2:33
+  |
+1 | from rest_framework import serializers
+2 | from django.contrib.auth import authenticate
+  |                                 ^^^^^^^^^^^^
+3 | from django.contrib.auth.password_validation import validate_password
+4 | from apps.clientes.models import Cliente
+  |
+help: Remove unused import: `django.contrib.auth.authenticate`
+
+B904 Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+  --> apps/clientes/serializers.py:61:17
+   |
+59 |                 cliente = Cliente.objects.get(correo=correo)
+60 |             except Cliente.DoesNotExist:
+61 |                 raise serializers.ValidationError('Credenciales inválidas.')
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 |
+63 |             if not cliente.check_password(password):
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/clientes/urls.py:1:1
+  |
+1 | / from django.urls import path
+2 | | from rest_framework_simplejwt.views import TokenRefreshView
+3 | | from apps.clientes.views import RegisterView, LoginView, MeView, TokenRefreshViewCustom
+  | |_______________________________________________________________________________________^
+4 |
+5 |   urlpatterns = [
+  |
+help: Organize imports
+
+F401 [*] `rest_framework_simplejwt.views.TokenRefreshView` imported but unused
+ --> apps/clientes/urls.py:2:44
+  |
+1 | from django.urls import path
+2 | from rest_framework_simplejwt.views import TokenRefreshView
+  |                                            ^^^^^^^^^^^^^^^^
+3 | from apps.clientes.views import RegisterView, LoginView, MeView, TokenRefreshViewCustom
+  |
+help: Remove unused import: `rest_framework_simplejwt.views.TokenRefreshView`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> apps/clientes/views.py:1:1
+   |
+ 1 | / from rest_framework import status, generics
+ 2 | | from rest_framework.response import Response
+ 3 | | from rest_framework.views import APIView
+ 4 | | from rest_framework_simplejwt.tokens import RefreshToken
+ 5 | | from rest_framework_simplejwt.views import TokenRefreshView
+ 6 | |
+ 7 | | from apps.clientes.models import Cliente
+ 8 | | from apps.clientes.serializers import (
+ 9 | |     RegisterSerializer,
+10 | |     LoginSerializer,
+11 | |     ClienteSerializer,
+12 | |     UpdateClienteSerializer
+13 | | )
+14 | | from apps.clientes.permissions import IsOwner
+   | |_____________________________________________^
+   |
+help: Organize imports
+
+F401 [*] `apps.clientes.models.Cliente` imported but unused
+ --> apps/clientes/views.py:7:34
+  |
+5 | from rest_framework_simplejwt.views import TokenRefreshView
+6 |
+7 | from apps.clientes.models import Cliente
+  |                                  ^^^^^^^
+8 | from apps.clientes.serializers import (
+9 |     RegisterSerializer,
+  |
+help: Remove unused import: `apps.clientes.models.Cliente`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/services/management/commands/seed_tipos_servicio.py:1:1
+  |
+1 | / from django.core.management.base import BaseCommand
+2 | | from apps.services.models import Tipo_servicio
+  | |______________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/services/models.py:1:1
+  |
+1 | / from django.db import models
+2 | | from django.core.exceptions import ValidationError
+3 | | from apps.clientes.models import Cliente
+4 | | from datetime import timedelta
+5 | | from django.utils import timezone
+  | |_________________________________^
+  |
+help: Organize imports
+
+F401 [*] `datetime.timedelta` imported but unused
+ --> apps/services/models.py:4:22
+  |
+2 | from django.core.exceptions import ValidationError
+3 | from apps.clientes.models import Cliente
+4 | from datetime import timedelta
+  |                      ^^^^^^^^^
+5 | from django.utils import timezone
+  |
+help: Remove unused import: `datetime.timedelta`
+
+F401 [*] `django.utils.timezone` imported but unused
+ --> apps/services/models.py:5:26
+  |
+3 | from apps.clientes.models import Cliente
+4 | from datetime import timedelta
+5 | from django.utils import timezone
+  |                          ^^^^^^^^
+  |
+help: Remove unused import: `django.utils.timezone`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/services/serializers.py:1:1
+  |
+1 | / from rest_framework import serializers
+2 | | from .models import Tipo_servicio, Catalogo_servicio, Servicio_usuario, Historial_pago, Notificacion, Ayuda
+  | |___________________________________________________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/services/tasks.py:1:1
+  |
+1 | / from celery import shared_task
+2 | | from django.utils import timezone
+3 | | from datetime import timedelta
+4 | | import calendar
+5 | | from .models import Servicio_usuario, Notificacion
+  | |__________________________________________________^
+  |
+help: Organize imports
+
+F401 [*] `datetime.timedelta` imported but unused
+ --> apps/services/tasks.py:3:22
+  |
+1 | from celery import shared_task
+2 | from django.utils import timezone
+3 | from datetime import timedelta
+  |                      ^^^^^^^^^
+4 | import calendar
+5 | from .models import Servicio_usuario, Notificacion
+  |
+help: Remove unused import: `datetime.timedelta`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> apps/services/tests.py:1:1
+  |
+1 | / import pytest
+2 | | from django.urls import reverse
+3 | | from rest_framework import status
+4 | | from datetime import date, datetime
+5 | | from decimal import Decimal
+  | |___________________________^
+  |
+help: Organize imports
+
+F401 [*] `datetime.date` imported but unused
+ --> apps/services/tests.py:4:22
+  |
+2 | from django.urls import reverse
+   |
+
+F405 `BASE_DIR` may be undefined, or defined from star imports
+  --> core/settings/development.py:31:14
+   |
+29 | MEDIA_URL = '/media/'
+30 | STATIC_ROOT = BASE_DIR / 'staticfiles'
+31 | MEDIA_ROOT = BASE_DIR / 'media'
+   |              ^^^^^^^^
+32 |
+33 | # Email console backend for development
+   |
+
+F403 `from .base import *` used; unable to detect undefined names
+ --> core/settings/production.py:4:1
+  |
+2 | Django production settings.
+3 | """
+4 | from .base import *
+  | ^^^^^^^^^^^^^^^^^^^
+5 | from decouple import config
+6 | import os
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> core/settings/production.py:4:1
+  |
+2 |   Django production settings.
+3 |   """
+4 | / from .base import *
+5 | | from decouple import config
+6 | | import os
+  | |_________^
+7 |
+8 |   DEBUG = config('DEBUG', default=False, cast=bool)
+  |
+help: Organize imports
+
+F401 [*] `os` imported but unused
+ --> core/settings/production.py:6:8
+  |
+4 | from .base import *
+5 | from decouple import config
+6 | import os
+  |        ^^
+7 |
+8 | DEBUG = config('DEBUG', default=False, cast=bool)
+  |
+help: Remove unused import: `os`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> core/urls.py:4:1
+  |
+2 |   URL configuration for core project.
+3 |   """
+4 | / from django.contrib import admin
+5 | | from django.urls import path, include
+6 | | from django.conf import settings
+7 | | from django.conf.urls.static import static
+  | |__________________________________________^
+8 |
+9 |   urlpatterns = [
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> core/wsgi.py:4:1
+  |
+2 |   WSGI config for core project.
+3 |   """
+4 | / import os
+5 | | from django.core.wsgi import get_wsgi_application
+  | |_________________________________________________^
+6 |
+7 |   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.production')
+  |
+help: Organize imports
+
+Found 33 errors.
+[*] 28 fixable with the `--fix` option.
+Error: Process completed with exit code 1
